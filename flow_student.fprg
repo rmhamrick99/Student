@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="rmham"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2019-02-18 10:27:38 PM"/>
+        <attribute name="created" value="cm1oYW07REVTS1RPUC1KSkFQS0RMOzIwMTktMDItMTg7MDg6MDA6MTkgUE07MjkxMw=="/>
+        <attribute name="edited" value="cm1oYW07REVTS1RPUC1KSkFQS0RMOzIwMTktMDItMTg7MTA6Mjc6MzggUE07MzszMDI2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="iNumStudents" type="Integer" array="False" size=""/>
+            <declare name="sFirstStudent" type="String" array="False" size=""/>
+            <declare name="sLastStudent" type="String" array="False" size=""/>
+            <declare name="sName" type="String" array="False" size=""/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <output expression="&quot;How many students are in the class? Must be a number between 1 and 25.&quot;" newline="True"/>
+            <input variable="iNumStudents"/>
+            <while expression="iNumStudents&lt;1 || iNumStudents &gt;25">
+                <output expression="&quot;You entered a value lower then 1, or greater then 25. Please stay within the limit.&quot;" newline="True"/>
+                <output expression="&quot;How many students in the class?&quot;" newline="True"/>
+                <input variable="iNumStudents"/>
+            </while>
+            <for variable="i" start="1" end="iNumStudents" direction="inc" step="1">
+                <output expression="&quot;Enter name of student #&quot; &amp; i" newline="True"/>
+                <input variable="sName"/>
+                <if expression="i=1">
+                    <then>
+                        <assign variable="sFirstStudent" expression="sName"/>
+                        <assign variable="sLastStudent" expression="sName"/>
+                    </then>
+                    <else>
+                        <if expression="sName &lt; sFirstStudent">
+                            <then>
+                                <assign variable="sFirstStudent" expression="sName"/>
+                            </then>
+                            <else>
+                                <if expression="sName &gt; sLastStudent">
+                                    <then>
+                                        <assign variable="sLastStudent" expression="sName"/>
+                                    </then>
+                                    <else/>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </for>
+            <output expression="&quot;First student is: &quot; &amp; sFirstStudent" newline="True"/>
+            <output expression="&quot;Last student is: &quot; &amp; sLastStudent" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
